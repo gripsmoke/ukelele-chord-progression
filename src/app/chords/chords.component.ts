@@ -10,10 +10,11 @@ import { Chord } from '../chord';
 })
 export class ChordsComponent implements OnInit {
   notesScale: string[];
-  majorChords: string[];
-  minorChords: string[];
+  majorChordScale: string[];
+  minorChordScale: string[];
   chordMap: Chord[];
   root:string;
+  mode:string;
   testChord:string;
   chordScale:string[];
   chordMinorScale:string[];
@@ -23,17 +24,18 @@ export class ChordsComponent implements OnInit {
 
   ngOnInit() {
     this.notesScale = Constants.SCALE;
-    this.majorChords = Constants.CHORDS_MAJOR_SCALE;
-    this.minorChords = Constants.CHORDS_MINOR_SCALE;
+    this.majorChordScale = Constants.CHORDS_MAJOR_SCALE;
+    this.minorChordScale = Constants.CHORDS_MINOR_SCALE;
     this.chordMap = Constants.CHORDS_MAP;
     this.chordScale = [];
-    this.chordMinorScale = [];
     this.settings.currentRoot.subscribe(root => {
       this.root = root;
-      //todo [update the chords]
-      this.generateChords();
-      //
     });
+    this.settings.currentMode.subscribe(mode => {
+      this.mode = mode;
+    });
+
+    this.generateChords();
     console.log('chords init');
     
   }
@@ -47,7 +49,8 @@ export class ChordsComponent implements OnInit {
   generateChords(){
     this.testChord = "";
     this.chordScale = [];
-    this.majorChords.forEach(function(value,index){
+    var modeStr:string = this.mode + "ChordScale";
+    this[modeStr].forEach(function(value,index){
       var chordIndex = this.chordMap.map(function(e){return e.name; }).indexOf(value);
       var notes: number[] = this.chordMap[chordIndex].notes;
       var thisRootNote = this.notesScale[(this.notesScale.indexOf(this.root)+index) % 12];
@@ -55,21 +58,6 @@ export class ChordsComponent implements OnInit {
       this.testChord = thisRootNote + value + ":    " + this.createChord(thisRootNote,notes);
       this.chordScale.push(this.testChord);
       console.log('in the foreach');
-      debugger;
-    }, this);
-
-
-    this.testMinorChord = "";
-    this.chordMinorScale = [];
-    this.minorChords.forEach(function(value,index){
-      var chordIndex = this.chordMap.map(function(e){return e.name; }).indexOf(value);
-      var notes: number[] = this.chordMap[chordIndex].notes;
-      var thisRootNote = this.notesScale[(this.notesScale.indexOf(this.root)+index) % 12];
-      
-      this.testChord = thisRootNote + value + ":    " + this.createChord(thisRootNote,notes);
-      this.chordMinorScale.push(this.testChord);
-      console.log('in the foreach');
-      debugger;
     }, this);
   }
 

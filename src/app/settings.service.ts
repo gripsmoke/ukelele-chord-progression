@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class SettingsService {
   private rootnoteSource = new BehaviorSubject<string>("C");
-  private keymodeSource = new BehaviorSubject<string>("major");
+  private keymodeSource = new BehaviorSubject<string>("minor");
   private tuningSource = new BehaviorSubject<string>("gCEA");
   private righthandSource = new BehaviorSubject<boolean>(true);
 
