@@ -3,8 +3,18 @@
 </p>
 
 
-<ul class="chords">
-  <li *ngFor="let chord of chordScale">
-    <span>{{chord}}</span><br />
+<ul class="chords {{mode}}">
+  <li>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>chord</th>
+        <th>notes</th>
+      </tr>
+      <tr *ngFor="let chord of chordScale">
+        <td *ngFor="let thisChord of chord" [innerHTML]="thisChord | chordnameSimplifier">
+        </td>
+      </tr>
+    </table>
   </li>
 </ul>

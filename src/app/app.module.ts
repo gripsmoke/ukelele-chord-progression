@@ -10,13 +10,16 @@ import { PianoComponent } from './piano/piano.component';
 
 import { SettingsService } from './settings.service';
 import { SettingsComponent } from './settings/settings.component';
+import { ChordnameSimplifierPipe } from './pipes/chordname-simplifier.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     NotesComponent,
     ChordsComponent,
     PianoComponent,
-    SettingsComponent
+    SettingsComponent,
+    ChordnameSimplifierPipe
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,6 @@ import { SettingsComponent } from './settings/settings.component';
     SettingsService
   ],
   bootstrap: [AppComponent],
-  exports: [SettingsComponent]
+  exports: [SettingsComponent, ChordnameSimplifierPipe, ChordnameSimplifierPipe]
 })
 export class AppModule { }

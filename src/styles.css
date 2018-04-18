@@ -120,3 +120,8 @@ app-entry-comment-form textarea {
     background-color: #9a0000;
     color: #fff;
 }
+
+sup {
+    font-size: 0.5em;
+    vertical-align: top;
+}

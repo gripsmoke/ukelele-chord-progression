@@ -41,6 +41,12 @@ export class Constants {
         ,
         'dim'
     ];
+    public static CHORDS_MAJOR_ROMAN: string[]=[
+        'I','ii','iii','IV','V','vi','vii*'
+    ];
+    public static CHORDS_MINOR_ROMAN: string[]=[
+        'I','ii*','iii','IV','V','vi','vii'
+    ];
 
     public static CHORDS_MINOR_SCALE: string[]=[
         'minor',

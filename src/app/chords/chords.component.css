@@ -1,0 +1,27 @@
+.chords li {
+    list-style: none;
+}
+
+.chords tr:nth-child(2),
+.chords tr:nth-child(5),
+.chords tr:nth-child(6)
+{
+    color: rgb(56, 56, 240);
+}
+.chords.major tr:nth-child(3),
+.chords tr:nth-child(4),
+.chords tr:nth-child(7),
+.chords.minor tr:nth-child(8) {
+    color: #1bf322;
+}
+.chords.major tr:nth-child(8),
+.chords.minor tr:nth-child(3){
+    color: rgb(255, 0, 0);
+}
+
+table tr td:nth-child(1) {
+    width: 2em;
+}
+table tr td:nth-child(2){
+    width: 3em;
+}
