@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { SettingsService } from '../settings.service';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-settings',
@@ -11,7 +12,10 @@ export class SettingsComponent implements OnInit {
   mode:string;
   tune:string;
   hand:boolean;
-
+  @Output() onModeChange:EventEmitter<string> = new EventEmitter<string>();
+  @Output() onTuneChange:EventEmitter<string> = new EventEmitter<string>();
+  @Output() onHandChange:EventEmitter<boolean> = new EventEmitter<boolean>();
+  
   constructor(private settings: SettingsService) { }
 
   ngOnInit() {
@@ -28,5 +32,18 @@ export class SettingsComponent implements OnInit {
       this.hand = hand;
     });
   }
+
+  public changeMode(strMode:string){
+    console.log("In Change Mode function");
+    this.settings.changeMode(strMode); 
+   }
+   public changeTune(strTune:string){
+    console.log("In Change Tune function");
+    //this.settings.changeTune(strTune); 
+   }
+   public changeHand(strHand:boolean){
+    console.log("In Change Hand function");
+    this.settings.changeHand(strHand); 
+   }
 
 }

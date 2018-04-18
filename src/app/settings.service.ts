@@ -16,7 +16,19 @@ export class SettingsService {
   constructor() { }
 
   changeNote(note:string){
-    console.log('In root note service changing note');
+    console.log('In settings service changing note');
     this.rootnoteSource.next(note);
+  }
+  changeMode(mode:string){
+    console.log('In settings service changing mode');
+    this.keymodeSource.next(mode);
+  }
+  changeTune(tune:string){
+    console.log('In settings service changing tune');
+    this.tuningSource.next(tune);
+  }
+  changeHand(hand:boolean){
+    console.log('In settings service changing hand');
+    this.righthandSource.next(hand);
   }
 }

@@ -2,8 +2,8 @@
 <h2>app-settings</h2>
 <p>
   Key: {{root}}<br />
-  Mode: {{mode}}<br />
+  Mode: {{mode}} <button (click)="changeMode('major')">Major</button><button (click)="changeMode('minor')">Minor</button><br />
   Tuning: {{tune}}<br />
-  Right-Handedness: {{hand}}<br />
+  <span (click)="changeHand(!hand)">Right-Handedness</span>: {{hand}}<br />
 </p>
 <hr>
