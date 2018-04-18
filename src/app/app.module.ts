@@ -8,13 +8,15 @@ import { NotesComponent } from './notes/notes.component';
 import { ChordsComponent } from './chords/chords.component';
 import { PianoComponent } from './piano/piano.component';
 
-import { RootnoteService } from './rootnote.service';
+import { SettingsService } from './settings.service';
+import { SettingsComponent } from './settings/settings.component';
 @NgModule({
   declarations: [
     AppComponent,
     NotesComponent,
     ChordsComponent,
-    PianoComponent
+    PianoComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -22,8 +24,9 @@ import { RootnoteService } from './rootnote.service';
     HttpModule
   ],
   providers: [
-    RootnoteService
+    SettingsService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [SettingsComponent]
 })
 export class AppModule { }

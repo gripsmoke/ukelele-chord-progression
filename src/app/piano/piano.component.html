@@ -1,0 +1,4 @@
+<div id="piano">
+  <button (click)="changeNote(note)" [ngClass]="{'highlighted':note == root}" type="button" *ngFor="let note of scale" class="class{{note.length}}" id="{{note | lowercase}}"><span>{{note}}</span></button> 
+</div>
+root: {{root}}

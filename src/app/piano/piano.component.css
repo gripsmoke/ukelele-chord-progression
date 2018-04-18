@@ -1,0 +1,49 @@
+body {background: #666;}
+#piano {
+  margin: 5em auto;
+  position: relative;
+  background-color: #222;
+  display: table;
+  border: solid 4px #090;
+}
+#piano button{
+  float:left;
+  position: relative;
+  border: 1px solid #000;
+}
+#piano button:hover, #piano button:active {
+  border: 1px solid #ff2e8b;
+}
+#piano button:active {
+  background-color: #443366;
+}
+.class1 {
+  height: 12em;
+  width: 3em;
+  background-color: white;
+  z-index: 1;
+}
+.class1 span {
+  position: absolute;
+  bottom: -2em;
+  left: 1em;
+}
+.class2 {
+  width: 2em;
+  z-index: 2;
+  background-color: black;
+  height: 8em;
+  margin-left: -1em;
+}
+.class2 span {
+  position: absolute;
+  top: -2em;
+  left: 0.5em;
+}
+#d, #e, #g, #a, #b {
+  margin: 0 0 0 -1em;
+}
+
+.highlighted {
+  background-color: #000066;
+}
