@@ -2,6 +2,7 @@ import { Component, OnInit, Input} from '@angular/core';
 import { Constants } from '../const/chords.const';
 import { SettingsService } from '../settings.service';
 import { Chord } from '../chord';
+import { UkeleleComponent } from '../uke/ukelele/ukelele.component';
 
 import {ChordnameSimplifierPipe} from '../pipes/chordname-simplifier.pipe';
 
@@ -26,9 +27,12 @@ export class ChordsComponent implements OnInit {
   chordScale:string[];
   chordTable:string[];
 
+  uke:UkeleleComponent;
+
   constructor(private settings: SettingsService) { }
 
   ngOnInit() {
+    console.log('chords init');
     this.notesScale = Constants.SCALE;
     this.majorChordScale = Constants.CHORDS_MAJOR_SCALE;
     this.majorChordRoman = Constants.CHORDS_MAJOR_ROMAN;
@@ -36,6 +40,9 @@ export class ChordsComponent implements OnInit {
     this.minorChordRoman = Constants.CHORDS_MINOR_ROMAN;
     this.chordMap = Constants.CHORDS_MAP;
     
+    this.uke = new UkeleleComponent();
+    this.uke.ngOnInit();
+
     this.settings.currentRoot.subscribe(root => {
       this.root = root;
       this.generateChords();
@@ -46,7 +53,6 @@ export class ChordsComponent implements OnInit {
 
     });
     this.generateChords();
-    console.log('chords init');
     
   } 
   createChord(note:string,arr:number[]){
@@ -76,13 +82,20 @@ export class ChordsComponent implements OnInit {
 
       thisChordDisplay.push(thisRootNote + value);
 
-      thisChordDisplay.push(this.createChord(thisRootNote,notes));
+      var chordStr:string = this.createChord(thisRootNote,notes);
+      thisChordDisplay.push(chordStr);
+
+      thisChordDisplay.push(this.getFrets(chordStr.split(",")));
 
       this.chordScale.push(thisChordDisplay);
       //this.testChord = thisRootNote + value + ":    " + this.createChord(thisRootNote,notes);
       //this.chordScale.push(this.testChord);
-      console.log(thisChordDisplay);
+      //console.log(thisChordDisplay);
     }, this);
   }
 
+  getFrets(chord:string[]){
+    //debugger;
+    return this.uke.getFretsForChord(chord).reverse().toString();
+  }
 }

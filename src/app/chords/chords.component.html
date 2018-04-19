@@ -10,6 +10,7 @@
         <th>#</th>
         <th>chord</th>
         <th>notes</th>
+        <th>frets</th>
       </tr>
       <tr *ngFor="let chord of chordScale">
         <td *ngFor="let thisChord of chord" [innerHTML]="thisChord | chordnameSimplifier">

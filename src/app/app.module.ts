@@ -7,9 +7,12 @@ import { AppComponent } from './app.component';
 import { NotesComponent } from './notes/notes.component';
 import { ChordsComponent } from './chords/chords.component';
 import { PianoComponent } from './piano/piano.component';
+import { SettingsComponent } from './settings/settings.component';
+import { UkeStringComponent } from './uke/uke-string/uke-string.component';
+import { UkeleleComponent } from './uke/ukelele/ukelele.component';
 
 import { SettingsService } from './settings.service';
-import { SettingsComponent } from './settings/settings.component';
+
 import { ChordnameSimplifierPipe } from './pipes/chordname-simplifier.pipe';
 
 @NgModule({
@@ -19,7 +22,9 @@ import { ChordnameSimplifierPipe } from './pipes/chordname-simplifier.pipe';
     ChordsComponent,
     PianoComponent,
     SettingsComponent,
-    ChordnameSimplifierPipe
+    ChordnameSimplifierPipe,
+    UkeStringComponent,
+    UkeleleComponent
   ],
   imports: [
     BrowserModule,
