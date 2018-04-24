@@ -29,11 +29,12 @@ export class UkeleleComponent implements OnInit {
     var retArr = Array();
     var i:number;
     var self = this;
-    debugger;
     for(i=0;i<4;i++){
       retArr.push(this.strings[i].findBestFret(chordNotes));
     }
+    console.log(chordNotes);
     console.log(retArr);
+    console.log("-------------");
     return retArr;
   }
 

@@ -52,7 +52,6 @@ export class ChordsComponent implements OnInit {
       this.generateChords();
 
     });
-    this.generateChords();
     
   } 
   createChord(note:string,arr:number[]){
@@ -95,7 +94,6 @@ export class ChordsComponent implements OnInit {
   }
 
   getFrets(chord:string[]){
-    //debugger;
     return this.uke.getFretsForChord(chord).reverse().toString();
   }
 }
