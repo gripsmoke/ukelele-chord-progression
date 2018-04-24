@@ -43,4 +43,10 @@ export class UkeStringComponent implements OnInit {
     return (this.frets.indexOf(note,startIndex));
   }
 
+  getNoteFromFret(note:string,fret:number){
+    var scale = Constants.SCALE;
+    var retNote = scale[(scale.indexOf(note) + fret) % 12];
+    return retNote;
+  }
+
 }

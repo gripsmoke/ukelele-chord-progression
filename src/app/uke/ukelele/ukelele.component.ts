@@ -26,16 +26,56 @@ export class UkeleleComponent implements OnInit {
   }
 
   getFretsForChord(chordNotes:string[]){
-    var retArr = Array();
+    var fretArr = Array();
     var i:number;
     var self = this;
     for(i=0;i<4;i++){
-      retArr.push(this.strings[i].findBestFret(chordNotes));
+      fretArr.push(this.strings[i].findBestFret(chordNotes));
     }
-    console.log(chordNotes);
-    console.log(retArr);
+    // need a function to make the 4th C fret / open E --- or --- 5th E fret / open A problem from happening
+    // need a function to ensure every note is represented in the chord.
+    console.log("---------------------------------------------------");
+    console.log("Chord is composed of the notes " + chordNotes);
+    console.log("The frets returned are " + fretArr);
+    var tempArr = fretArr.slice(0);
+    tempArr.forEach(function(value,index){
+      //console.log("value " + value);
+     // console.log("index " + index);
+      //console.log("ret arr is " + tempArr);
+      var noteUsed = this.strings[index].getNoteFromFret(this.strings[index].ukeString, value);
+      tempArr.splice(index,1,noteUsed);
+      //console.log("Ret Arr is now " + tempArr);
+    }, this);
+   // console.log("Did RetArr stay changed ? " + tempArr);
+   // console.log("leftover notes is " + chordNotes);
+    var missingNotes = chordNotes.filter(function(n){
+      return tempArr.indexOf(n) == -1;
+    });
+    
+    var dupeNotes = chordNotes.filter(function(n){
+      return tempArr.indexOf(n) != tempArr.lastIndexOf(n);
+    });
+    if (missingNotes.length){
+      console.log("Missing notes are " + missingNotes);
+      console.log("Dupe notes are " + dupeNotes);
+      var missingNote = missingNotes[0]; // TODO: make this work for multiple missing notes
+      var bestOffset = 12;
+      var bestFret = -1;
+      for(i=0;i<4;i++){
+        if (dupeNotes.indexOf(tempArr[i]) != -1){
+          var thisNextFret = this.strings[i].getNextFret(missingNote);
+          if (thisNextFret < bestOffset){
+            bestOffset = thisNextFret;
+            bestFret = i;
+          }
+        }
+      }
+      fretArr[bestFret] = bestOffset;
+      console.log("Now the frets are " + fretArr);
+    }
+    
     console.log("-------------");
-    return retArr;
+    return fretArr;
   }
 
 }
