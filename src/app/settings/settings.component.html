@@ -1,9 +1,19 @@
-<hr>
-<h2>app-settings</h2>
+<div id="settings"><hr>
+<h2>Settings</h2>
 <p>
-  Key: {{root}}<br />
-  Mode: {{mode}} <button (click)="changeMode('major')">Major</button><button (click)="changeMode('minor')">Minor</button><br />
-  Tuning: {{tune}}<br />
-  <span (click)="changeHand(!hand)">Right-Handedness</span>: {{hand}}<br />
+  Key: <span class="pink">{{root}}</span> <span class="help">(Click piano key above to change key)</span>
 </p>
+<p class="mode mode-{{mode}}">
+  Mode: 
+    <button id="changeMajor" (click)="changeMode('major')">Major</button>
+    <button id="changeMinor" (click)="changeMode('minor')">Minor</button>
+    <span class="help">Click "Major" or "Minor" to change the key.</span>
+</p>
+<!-- <p>
+  Tuning: {{tune}} <span class="help">(Custom tuning not implemented)</span>
+</p>
+<p>
+  <span (click)="changeHand(!hand)">Right-Handedness</span>: {{hand}} <span class="help">(Custom Ukelele display not implemented)</span><br />
+</p> -->
 <hr>
+</div>

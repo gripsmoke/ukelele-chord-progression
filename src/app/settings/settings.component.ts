@@ -43,7 +43,7 @@ export class SettingsComponent implements OnInit {
    }
    public changeHand(strHand:boolean){
     console.log("In Change Hand function");
-    this.settings.changeHand(strHand); 
+    //this.settings.changeHand(strHand); 
    }
 
 }

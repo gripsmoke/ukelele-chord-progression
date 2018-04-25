@@ -1,3 +1,17 @@
+h2 {
+    text-align: center;
+    color: pink;
+}
+.chords {
+    font-family: monospace;
+    font-size: 2em;
+    display: table;
+    margin: 0 auto;
+    padding: 0;
+}
+.chords th {
+    vertical-align: top;
+}
 .chords li {
     list-style: none;
 }
@@ -24,4 +38,11 @@ table tr td:nth-child(1) {
 }
 table tr td:nth-child(2){
     width: 3em;
+    font-weight: bold;
+}
+table tr td:nth-child(3){
+    width: 5em;
+}
+table tr td {
+    border: solid 1px black;
 }

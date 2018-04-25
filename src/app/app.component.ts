@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = "m@grant.ski's Ukelele Chord Progression Generator";
+  desc = "This tool allows ukelele players to see what chords and fingerings are useful for different keys.";
 }

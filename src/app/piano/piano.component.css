@@ -1,6 +1,6 @@
 body {background: #666;}
 #piano {
-  margin: 5em auto;
+  margin: 7vh auto;
   position: relative;
   background-color: #222;
   display: table;
@@ -18,7 +18,7 @@ body {background: #666;}
   background-color: #443366;
 }
 .class1 {
-  height: 12em;
+  height: 24vh;
   width: 3em;
   background-color: white;
   z-index: 1;
@@ -32,7 +32,7 @@ body {background: #666;}
   width: 2em;
   z-index: 2;
   background-color: black;
-  height: 8em;
+  height: 18vh;
   margin-left: -1em;
 }
 .class2 span {
@@ -46,4 +46,28 @@ body {background: #666;}
 
 .highlighted {
   background-color: #000066;
+}
+
+@media only screen and (max-width: 453px){
+  button {
+    font-size: 1em;
+  }
+  .class1 {
+    height: 20vh;
+    width: 2.66em;
+  }
+  .class1 span {
+    left:0.8em;
+  }
+  .class2 {
+    height: 14vh;
+    width:2em;
+    margin-left: -0.6165em;
+  }
+  .class2 span {
+    left: 0.3em;
+  }
+  #d, #e, #g, #a, #b {
+    margin: 0 0 0 -1.4em;
+  }
 }

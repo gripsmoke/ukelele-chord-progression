@@ -1,0 +1,16 @@
+.help {
+    font-style: italic;
+}
+.mode-major #changeMinor, .mode-minor #changeMajor {
+    text-decoration: underline;
+    color: blue;
+}
+.mode-major #changeMajor, .mode-minor #changeMinor, .pink {
+    color: pink;
+}
+p {
+    margin: 0;
+}
+#settings {
+    text-align: center;
+}

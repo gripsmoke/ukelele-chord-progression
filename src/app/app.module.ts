@@ -14,6 +14,7 @@ import { UkeleleComponent } from './uke/ukelele/ukelele.component';
 import { SettingsService } from './settings.service';
 
 import { ChordnameSimplifierPipe } from './pipes/chordname-simplifier.pipe';
+import { InfoCopyrightComponent } from './info-copyright/info-copyright.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ChordnameSimplifierPipe } from './pipes/chordname-simplifier.pipe';
     SettingsComponent,
     ChordnameSimplifierPipe,
     UkeStringComponent,
-    UkeleleComponent
+    UkeleleComponent,
+    InfoCopyrightComponent
   ],
   imports: [
     BrowserModule,

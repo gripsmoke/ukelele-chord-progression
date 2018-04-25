@@ -1,8 +1,5 @@
-<p>
-  chords works!
-</p>
 
-
+<h2>Key: {{root}} {{mode}}</h2>
 <ul class="chords {{mode}}">
   <li>
     <table>
@@ -10,7 +7,7 @@
         <th>#</th>
         <th>chord</th>
         <th>notes</th>
-        <th>frets</th>
+        <th>frets<br />g|C|E|A</th>
       </tr>
       <tr *ngFor="let chord of chordScale">
         <td *ngFor="let thisChord of chord" [innerHTML]="thisChord | chordnameSimplifier">
