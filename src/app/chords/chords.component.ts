@@ -3,6 +3,7 @@ import { Constants } from '../const/chords.const';
 import { SettingsService } from '../settings.service';
 import { Chord } from '../chord';
 import { UkeleleComponent } from '../uke/ukelele/ukelele.component';
+import { ChordTableComponent } from './chordTable/chord-table.component';
 
 import {ChordnameSimplifierPipe} from '../pipes/chordname-simplifier.pipe';
 
@@ -27,12 +28,14 @@ export class ChordsComponent implements OnInit {
   chordScale:string[];
   chordTable:string[];
 
+  chordTable2:ChordTableComponent[] = [];
+
   uke:UkeleleComponent;
 
   constructor(private settings: SettingsService) { }
 
   ngOnInit() {
-    console.log('chords init');
+    //console.log('chords init');
     this.notesScale = Constants.SCALE;
     this.majorChordScale = Constants.CHORDS_MAJOR_SCALE;
     this.majorChordRoman = Constants.CHORDS_MAJOR_ROMAN;
@@ -70,30 +73,37 @@ export class ChordsComponent implements OnInit {
     var modeStr:string = this.mode + "ChordScale";
     var roman:string = this.mode + "ChordRoman";
     var rix:number = 0;
+    var myChordTable = [];
     this[modeStr].forEach(function(value,index){
-      var thisChordDisplay = [];
+      console.log("Value is " + value + "|| Index is " + index);
       var chordIndex = this.chordMap.map(function(e){return e.name; }).indexOf(value);
       var notes: number[] = this.chordMap[chordIndex].notes;
       var thisRootNote = this.notesScale[(this.notesScale.indexOf(this.root)+index) % 12];
-      
-      thisChordDisplay.push(this[roman][rix]);
-      rix++;
 
-      thisChordDisplay.push(thisRootNote + value);
+      console.log("Rootnote is " + thisRootNote);
+
+      var tempChordTable = new ChordTableComponent;
+      tempChordTable.romanNumeral = this[roman][rix];
+      tempChordTable.chordName = thisRootNote + value;
 
       var chordStr:string = this.createChord(thisRootNote,notes);
-      thisChordDisplay.push(chordStr);
+      tempChordTable.notes = chordStr;
+      tempChordTable.frets = this.getFrets(chordStr.split(","));
+      
+      console.log(tempChordTable);
+      myChordTable.push(tempChordTable);
+      this.chordTable2 = myChordTable;
+      rix++;
 
-      thisChordDisplay.push(this.getFrets(chordStr.split(",")));
-
-      this.chordScale.push(thisChordDisplay);
-      //this.testChord = thisRootNote + value + ":    " + this.createChord(thisRootNote,notes);
-      //this.chordScale.push(this.testChord);
-      //console.log(thisChordDisplay);
     }, this);
   }
 
   getFrets(chord:string[]){
     return this.uke.getFretsForChord(chord).reverse().toString();
+  }
+
+  changeChord(chord:string,frets:string){
+    console.log('User clicked ' + chord);
+    this.settings.changeChord(chord,frets);
   }
 }

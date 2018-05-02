@@ -13,7 +13,7 @@ export class UkeleleComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("UkeleleComponent ngOnInit fired");
+  //console.log("UkeleleComponent ngOnInit fired");
     this.strings = [
       new UkeStringComponent(),
       new UkeStringComponent(),
@@ -25,7 +25,7 @@ export class UkeleleComponent implements OnInit {
     this.strings[2].setString('C');
     this.strings[3].setString('G');
     this.currentChord=["0","0","0","0"];
-    console.log("current chord is " + this.currentChord);
+    //console.log("current chord is " + this.currentChord);
     this.var = "hello";
   }
 

@@ -15,6 +15,7 @@ import { SettingsService } from './settings.service';
 
 import { ChordnameSimplifierPipe } from './pipes/chordname-simplifier.pipe';
 import { InfoCopyrightComponent } from './info-copyright/info-copyright.component';
+import { ChordTableComponent } from './chords/chordTable/chord-table.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { InfoCopyrightComponent } from './info-copyright/info-copyright.componen
     ChordnameSimplifierPipe,
     UkeStringComponent,
     UkeleleComponent,
-    InfoCopyrightComponent
+    InfoCopyrightComponent,
+    ChordTableComponent
   ],
   imports: [
     BrowserModule,

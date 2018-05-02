@@ -15,6 +15,12 @@ export class SettingsComponent implements OnInit {
   @Output() onModeChange:EventEmitter<string> = new EventEmitter<string>();
   @Output() onTuneChange:EventEmitter<string> = new EventEmitter<string>();
   @Output() onHandChange:EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  chord:string;
+  frets:string;
+  @Output() onChordChange:EventEmitter<string> = new EventEmitter<string>();
+  @Output() onFretsChange:EventEmitter<string> = new EventEmitter<string>();
+  
   
   constructor(private settings: SettingsService) { }
 
@@ -31,6 +37,12 @@ export class SettingsComponent implements OnInit {
     this.settings.currentHand.subscribe(hand => {
       this.hand = hand;
     });
+    this.settings.currentChord.subscribe(chord => {
+      this.chord = chord;
+    })
+    this.settings.currentFrets.subscribe(frets => {
+      this.frets = frets;
+    })
   }
 
   public changeMode(strMode:string){

@@ -1,5 +1,6 @@
 
 <h2>Key: {{root}} {{mode}}</h2>
+<h3>{{mode}}</h3>
 <ul class="chords {{mode}}">
   <li>
     <table>
@@ -9,10 +10,16 @@
         <th>notes</th>
         <th>frets<br />g|C|E|A</th>
       </tr>
-      <tr *ngFor="let chord of chordScale">
+      <tr *ngFor="let chord of chordTable2">
+        <td>{{chord.romanNumeral}}</td>
+        <td (click)="changeChord(chord.chordName,chord.frets)">{{chord.chordName | chordnameSimplifier}}</td>
+        <td>{{chord.notes}}</td>
+        <td>{{chord.frets}}</td>
+      </tr>
+      <!--<tr *ngFor="let chord of chordScale">
         <td *ngFor="let thisChord of chord" [innerHTML]="thisChord | chordnameSimplifier">
         </td>
-      </tr>
+      </tr>-->
     </table>
   </li>
 </ul>
