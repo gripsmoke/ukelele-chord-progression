@@ -43,7 +43,7 @@ export class ChordsComponent implements OnInit {
     this.minorChordRoman = Constants.CHORDS_MINOR_ROMAN;
     this.chordMap = Constants.CHORDS_MAP;
     
-    this.uke = new UkeleleComponent();
+    this.uke = new UkeleleComponent(this.settings);
     this.uke.ngOnInit();
 
     this.settings.currentRoot.subscribe(root => {

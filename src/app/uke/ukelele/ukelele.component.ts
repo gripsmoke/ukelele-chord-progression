@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UkeStringComponent } from '../uke-string/uke-string.component';
+import { SettingsService } from '../../settings.service';
 
 @Component({
   selector: 'app-ukelele',
@@ -9,8 +10,10 @@ import { UkeStringComponent } from '../uke-string/uke-string.component';
 export class UkeleleComponent implements OnInit {
   public strings:UkeStringComponent[];
   public var:string;
-  public currentChord:string[];
-  constructor() { }
+  public frets:string[];
+  public chord:string;
+
+  constructor(private settings: SettingsService) { }
 
   ngOnInit() {
   //console.log("UkeleleComponent ngOnInit fired");
@@ -24,9 +27,21 @@ export class UkeleleComponent implements OnInit {
     this.strings[1].setString('E');
     this.strings[2].setString('C');
     this.strings[3].setString('G');
-    this.currentChord=["0","0","0","0"];
     //console.log("current chord is " + this.currentChord);
     this.var = "hello";
+
+
+    this.settings.currentFrets.subscribe(frets => {
+      var fretsArray = [];
+      frets.split(",").forEach(function(value,index){
+        fretsArray.push(value);
+      }, this);
+      this.frets = fretsArray;
+      this.frets.reverse();
+    });
+    this.settings.currentChord.subscribe(chord => {
+      this.chord = chord;
+    });
   }
 
   getFretsForChord(chordNotes:string[]){
@@ -74,8 +89,11 @@ export class UkeleleComponent implements OnInit {
     }
     
 //    console.log("-------------");
-    this.currentChord = fretArr;
     return fretArr;
+  }
+
+  cssThisFret(fretIndex,sIndex){
+    return (this.frets[sIndex] == fretIndex);
   }
 
 }

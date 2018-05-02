@@ -1,19 +1,20 @@
 <app-uke-string></app-uke-string>
 
-Uke component
+Uke component<br />
+Frets: {{frets}}
+<hr>
+Chord: {{chord | chordnameSimplifier }}
 <hr>
 
-
 <div id="ukelele">
-    <div class="c" *ngFor="let chord of currentChord">
-        {{chord}}
-    </div>
     <div class="ukestring ukestring{{sIndex+1}}" *ngFor="let string of strings; let sIndex = index">
-        <div class="nut">
+        <div class="nut" [ngClass]="{highlighted: cssThisFret(0,sIndex)}">
             <span>{{string.ukeString}}</span>
         </div>
         <div class="frets" *ngFor="let fret of string.frets; let fretIndex = index" [attr.data-index]=i>
-            <div *ngIf="fretIndex != 0" class="fret fret{{i}}">{{fret}}</div>
+            <div *ngIf="fretIndex != 0">
+                <div class="fret fret-{{fretIndex}}" [ngClass]="{highlighted: cssThisFret(fretIndex,sIndex)}">{{fretIndex}}</div>
+            </div>
         </div>
     </div> 
 </div>
