@@ -1,3 +1,26 @@
-p {
-    display: none;
+.ukestring {
+    width: 100%;
+    display: block;
+    float: left;
+}
+.frets {
+    display: block;
+    float: left;
+}
+
+
+.ukestring .nut {
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+    color: red;
+    font-size: 0.5em;
+    text-align:center;
+    float: left;
+}
+
+.fret {
+    height: 50px;
+    width: 50px;
+    background-color: brown;
+    border-right: solid 2px silver;
 }

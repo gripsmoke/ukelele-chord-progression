@@ -8,7 +8,8 @@ import { UkeStringComponent } from '../uke-string/uke-string.component';
 })
 export class UkeleleComponent implements OnInit {
   public strings:UkeStringComponent[];
-  
+  public var:string;
+  public currentChord:string[];
   constructor() { }
 
   ngOnInit() {
@@ -23,6 +24,9 @@ export class UkeleleComponent implements OnInit {
     this.strings[1].setString('E');
     this.strings[2].setString('C');
     this.strings[3].setString('G');
+    this.currentChord=["0","0","0","0"];
+    console.log("current chord is " + this.currentChord);
+    this.var = "hello";
   }
 
   getFretsForChord(chordNotes:string[]){
@@ -70,6 +74,7 @@ export class UkeleleComponent implements OnInit {
     }
     
 //    console.log("-------------");
+    this.currentChord = fretArr;
     return fretArr;
   }
 
