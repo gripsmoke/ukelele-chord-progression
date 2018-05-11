@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UkeStringComponent } from '../uke-string/uke-string.component';
 import { SettingsService } from '../../settings.service';
+import { ChordnameSimplifierPipe } from '../../pipes/chordname-simplifier.pipe';
 
 @Component({
   selector: 'app-ukelele',

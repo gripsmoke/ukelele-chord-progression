@@ -17,7 +17,7 @@ export class UkeStringComponent implements OnInit {
   }
 
   setString(note:string){
-    this.frets = Array(12);
+    this.frets = Array(18);
     this.ukeString = note;
     var scale = Constants.SCALE;
     var i:number;
